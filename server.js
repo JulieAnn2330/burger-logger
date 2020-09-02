@@ -25,44 +25,44 @@
     g. Run npm i nodemon -- DONE
         i. Add "dev": "nodemon index"script to package.json -- DONE
     h. Create .gitignore file -- DONE
-    i. Create a db folder
-        i. Inside this create schema.sql
+    i. Create a db folder -- DONE
+        i. Inside this create schema.sql -- DONE
             1. Create burgers-db
             2. Switch to burgers-db
             3. Create burgers table
                 i. burger_name = varchar
                 ii. devoured = boolean
-        ii. Create seeds.sql file
+        ii. Create seeds.sql file -- DONE
             1. At least three entries to poplulate burgers table
     j. Create DB in mySQL Workbench
         i. Run from command line (?) mysql -u root -p
             1. Enter source schema.spl to create DB
             2.Enter source seeds.sql to populate table 
         ii. Run exit to close out
-    k. Inside burger create config folder
-        i. Create a connection.js file inside this
+    k. Inside burger create config folder -- DONE
+        i. Create a connection.js file inside this -- DONE
             1. Inside this setup code to connect node to mySQL
             2. Export connection
-        ii. Create an orm.js file inside this
+        ii. Create an orm.js file inside this -- DONE
             1. Inside this import (require) connection.js
             2. Create methods that will execute mySQL commands in the controllers. This will retrieve and store data in the db
                 a. selectAll()
                 b. insertOne()
                 c. updateOne()
             3. Export ORM with module.exports
-    l. Create a folder called models
-        i. Inside this make a burger.js file
+    l. Create a folder called models -- DONE
+        i. Inside this make a burger.js file -- DONE
             1. Inside this import orm.js
             2. Create code that will call ORM functions using burger specific input for the ORM
             3. Export burger.js with module.exports
-    m. Create a folder called controllers
-        i. Inside this create burgers_controller.js
+    m. Create a folder called controllers -- DONE
+        i. Inside this create burgers_controller.js -- DONE
             1. Inside this import Express
             2. Inside this import burger.js
         ii. Create the router for the app
             1. Export router with module.exports
-    n. Create a folder called views
-        i. Inside this create index.handlebars
+    n. Create a folder called views -- DONE
+        i. Inside this create index.handlebars -- DONE
             1. This will be the template for Handlebars to render onto
                 a. Include graphic of burger -- DONE
                 b. Colored background
@@ -71,11 +71,19 @@
                 e. Logo for Eat-Da-Burger(?) -- DONE
                     i. Home of World-Famous-Custom-Order-Burgers
             2. Create a submit button that will submit input into mySQL db
-        ii. Inside this create layouts folder
-            1. Inside this create main.handlebars
+        ii. Inside this create layouts folder -- DONE
+            1. Inside this create main.handlebars -- DONE
+    o. Create a folder called public -- DONE
+        i. Inside this create an assets folder -- DONE
+            1. Inside this create a css folder -- DONE
+                a. Inside this create burger_style.css -- DONE
+            2. Inside this create img folder
+                a. Inside this add image(s) to use on page
 4. Code
     a. Start with what I know / can do right now
         i. MySQL
         ii. Express
         iii. Handlebars
+        iv. npm setup -- DONE
+        v. Folder structure -- DONE
 */
