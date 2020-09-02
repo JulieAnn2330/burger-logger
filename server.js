@@ -14,16 +14,18 @@
     d. Handlebars
     e. Homemade ORM
 3. Setup
-    a. Git Repo
+    a. Git Repo -- DONE
         i. Burger Logger
-    b. Run npm init
-    c. Run npm i express
+    b. Run npm init -- DONE
+    c. Run npm i express -- DONE
         i. Require this in the server.js file
-    d. Create a server.js file
-    e. Run npm i express-handlebars
-    f. Run npm i mysql
-    g. Run npm i nodemon
-    h. Create a db folder
+    d. Create a server.js file -- DONE
+    e. Run npm i express-handlebars -- DONE
+    f. Run npm i mysql -- DONE
+    g. Run npm i nodemon -- DONE
+        i. Add "dev": "nodemon index"script to package.json -- DONE
+    h. Create .gitignore file -- DONE
+    i. Create a db folder
         i. Inside this create schema.sql
             1. Create burgers-db
             2. Switch to burgers-db
@@ -32,12 +34,12 @@
                 ii. devoured = boolean
         ii. Create seeds.sql file
             1. At least three entries to poplulate burgers table
-    i. Create DB in mySQL Workbench
+    j. Create DB in mySQL Workbench
         i. Run from command line (?) mysql -u root -p
             1. Enter source schema.spl to create DB
             2.Enter source seeds.sql to populate table 
         ii. Run exit to close out
-    j. Inside burger create config folder
+    k. Inside burger create config folder
         i. Create a connection.js file inside this
             1. Inside this setup code to connect node to mySQL
             2. Export connection
@@ -48,21 +50,21 @@
                 b. insertOne()
                 c. updateOne()
             3. Export ORM with module.exports
-    k. Create a folder called models
+    l. Create a folder called models
         i. Inside this make a burger.js file
             1. Inside this import orm.js
             2. Create code that will call ORM functions using burger specific input for the ORM
             3. Export burger.js with module.exports
-    l. Create a folder called controllers
+    m. Create a folder called controllers
         i. Inside this create burgers_controller.js
             1. Inside this import Express
             2. Inside this import burger.js
         ii. Create the router for the app
             1. Export router with module.exports
-    m. Create a folder called views
+    n. Create a folder called views
         i. Inside this create index.handlebars
             1. This will be the template for Handlebars to render onto
-                a. Include graphic of burger
+                a. Include graphic of burger -- DONE
                 b. Colored background
                 c. Style text
                 d. Style textboxes
