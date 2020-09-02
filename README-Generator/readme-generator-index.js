@@ -96,18 +96,21 @@ function promptUser() {
           message: '8. What technologies does your project incorporate? (Choose from list and hit enter to advance)',
           name: 'technology',
           choices: [
-               'HTML',
-               'CSS',
+               'AJAX',
+               'API Calls',
                'Bootstrap',
+               'Bulma',
+               'CSS',
+               'Express',
+               'Handlebars',
+               'HTML',
                'JavaScript',
                'jQuery',
                'moment.js',
-               'API Calls',
-               'AJAX',
-               'node.js',
                'mySQL',
-               'Handlebars',
-               'ORM'
+               'node.js',
+               'ORM',
+               'React'
           ]},
           {
           type: 'input',
