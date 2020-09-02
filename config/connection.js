@@ -1,0 +1,2 @@
+/* Use this file to setup code to connect node to mySQL
+Export connection*/
