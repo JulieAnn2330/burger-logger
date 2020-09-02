@@ -31,7 +31,7 @@ Need a submit button that inputs data into mySQL}}
 
 <h2 class="order">Order a Burger</h2>
 <form id="orderburger" class="button-size">
-  <textarea type="text" name="order"></textarea>
+  <textarea type="text" name="burger_name"></textarea>
   <button type="submit" class="btn">Order a Burger!</button>
 </form>
 
@@ -50,9 +50,9 @@ Need a submit button that inputs data into mySQL}}
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    // [name=burger_name] will find an element with a "name" attribute equal to the string "plan"
+    // [name=order] will find an element with a "name" attribute equal to the string "burger"
     var newBurger = {
-      order: $("#orderburger [name=order]").val().trim()
+      burger_name: $("#orderburger [name=burger_name]").val().trim()
     };
 
     // Send the POST request.
@@ -76,7 +76,7 @@ Need a submit button that inputs data into mySQL}}
     var id = $("[name=id]").val().trim();
 
     var devourBurger = {
-      order: $("#devourburger [name=order]").val().trim()
+      burger_name: $("#devourburger [name=burger_name]").val().trim()
     };
 
     // Send the PUT request.

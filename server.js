@@ -171,7 +171,7 @@ app.post("/api/burgers", function(req, res) {
 
 // Devour a Burger
 app.put("/api/burgers/:id", function(req, res) {
-  connection.query("UPDATE burgers SET devoured = 1 WHERE id = ?", [req.body.burger_name, req.params.id], function(err, result) {
+  connection.query("UPDATE burgers SET devoured = 1 WHERE burger_name = ?", [req.body.devoured, req.params.burger_name], function(err, result) {
     if (err) {
       // If an error occurred, send a generic server failure
       return res.status(500).end();
