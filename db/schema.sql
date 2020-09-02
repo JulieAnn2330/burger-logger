@@ -11,7 +11,7 @@ USE burgers_db;
 
 -- Created the table "burgers"
 CREATE TABLE burgers (
-  id int AUTO_INCREMENT NOT NULL,
+  id int AUTO_INCREMENT NOT NULL primary key,
   burger_name varchar(100) NOT NULL,
-  devoured boolean default to false
+  devoured tinyint(1) default 0
 );

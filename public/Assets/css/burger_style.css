@@ -1,5 +1,23 @@
 body {
-    background-color: steelblue;
+    background-color: lightslategray;
     width: 100%;
-    font-family: 'Luckiest Guy', cursive;
      }
+
+.aligncenter {
+    text-align: center;
+    }
+
+.burgerName {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 12px;
+}
+
+.order, .devour, .btn {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 16px;
+}
+
+.btn {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 10px;
+}

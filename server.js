@@ -87,8 +87,23 @@
         iii. Handlebars
         iv. npm setup -- DONE
         v. Folder structure -- DONE
-        vi. CSS
+        vi. CSS -- DONE
         vii. HTML
+    b. DB -- DONE
+        i. schema.sql -- DONE
+        ii. seeds.sql -- DONE
+    c. Config
+        i. connection.js
+        ii. orm.js
+    d. Controllers
+        i. burgers_controller.js
+    e. Models
+        i. burger.js
+    f. Views
+        i. index.handlebars
+        ii. Layouts
+            1. main.handlebars
+    g. server.js
 */
 
 // Dependencies
@@ -96,6 +111,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require('mysql');
 const nodemon = require('nodemon');
+const path = require('path');
 
 
 var app = express();
@@ -107,6 +123,7 @@ var PORT = process.env.PORT || 8080;
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, './public')));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -128,33 +145,33 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-// Use Handlebars to render the main index.html page with the plans in it.
+// Use Handlebars to render the main index.html page with the burgers in it.
 app.get("/", function(req, res) {
-  connection.query("SELECT * FROM plans;", function(err, data) {
+  connection.query("SELECT * FROM burgers;", function(err, data) {
     if (err) {
       return res.status(500).end();
     }
 
-    res.render("index", { plans: data });
+    res.render("index", { burgers: data });
   });
 });
 
-// Create a new plan
-app.post("/api/plans", function(req, res) {
-  connection.query("INSERT INTO plans (plan) VALUES (?)", [req.body.plan], function(err, result) {
+// Create a new burger
+app.post("/api/burgers", function(req, res) {
+  connection.query("INSERT INTO burgers (burger_name) VALUES (?)", [req.body.burger_name], function(err, result) {
     if (err) {
       return res.status(500).end();
     }
 
-    // Send back the ID of the new plan
+    // Send back the ID of the new burger
     res.json({ id: result.insertId });
     console.log({ id: result.insertId });
   });
 });
 
-// Update a plan
-app.put("/api/plans/:id", function(req, res) {
-  connection.query("UPDATE plans SET plan = ? WHERE id = ?", [req.body.plan, req.params.id], function(err, result) {
+// Devour a Burger
+app.put("/api/burgers/:id", function(req, res) {
+  connection.query("UPDATE burgers SET devoured = 1 WHERE id = ?", [req.body.burger_name, req.params.id], function(err, result) {
     if (err) {
       // If an error occurred, send a generic server failure
       return res.status(500).end();
@@ -167,8 +184,6 @@ app.put("/api/plans/:id", function(req, res) {
 
   });
 });
-
-
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {

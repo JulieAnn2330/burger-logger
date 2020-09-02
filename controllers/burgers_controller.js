@@ -4,7 +4,7 @@ Create the router for the app
 Export the router with module.exports*/
 
 const express = require("express");
-const burgerjs = requiree('/models/burger.js');
+const burgerjs = require('/models/burger.js');
 
 // Routes
 app.get("/icecreams/:name", function(req, res) {
