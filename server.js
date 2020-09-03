@@ -114,7 +114,7 @@ const nodemon = require('nodemon');
 const path = require('path');
 
 
-var app = express();
+const app = express();
 
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -169,18 +169,18 @@ app.post("/api/burgers", function(req, res) {
   });
 });
 
-// Devour a Burger
-app.put("/api/burgers/:id", function(req, res) {
-  connection.query("UPDATE burgers SET devoured = 1 WHERE burger_name = ?", [req.body.devoured, req.params.burger_name], function(err, result) {
+//Devour a Burger
+app.put("/api/burgers", function(req, res) {
+  connection.query("UPDATE burgers SET devoured = 1 WHERE burger_name = ?", [req.params.burger_name], function(err, result) {
     if (err) {
       // If an error occurred, send a generic server failure
       return res.status(500).end();
     }
-    else if (result.changedRows === 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    }
-    res.status(200).end();
+
+    // Send back the devoured status of the burger
+    res.json({ devoured: result.updateDevoured });
+    console.log({ devoured: result.updateDevoured });
+  
 
   });
 });

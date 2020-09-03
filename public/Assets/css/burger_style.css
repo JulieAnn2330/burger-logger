@@ -7,17 +7,55 @@ body {
     text-align: center;
     }
 
-.burgerName {
+.burgerName, .textArea {
     font-family: 'Luckiest Guy', cursive;
     font-size: 12px;
 }
 
-.order, .devour, .btn {
+.order, .devour, .btn, h1 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 16px;
 }
 
-.btn {
+h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 16px;
+    margin-left:40px;
+    
+}
+
+.btn, .devourBurger {
     font-family: 'Luckiest Guy', cursive;
     font-size: 10px;
+    margin-left: 10px;
+    background-color: red;
+    color: black;
+}
+
+.orderBtn {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 10px;
+    margin-left: 100px;
+    margin-top: 5px;
+    background-color: limegreen;
+    color: black;
+}
+
+.textArea {
+    margin-left: 75px;
+    margin-top: 60px;
+}
+
+.orderList {
+    float: left;
+}
+
+.devourList {
+    float: right;
+    margin-top: -123px;
+    margin-right: 150px;
+}
+
+.orderArea {
+    float: center;
 }

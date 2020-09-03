@@ -19,38 +19,48 @@ Need a submit button that inputs data into mySQL}}
 	</body>
 </html>
 
+{{!List area on left for ordered burgers}}
+<div class="orderList">
+<h1>Burgers Ordered</h1>
 <ul>
   {{#each burgers}}
+  {{#unless this.devoured}}
   <li class="burgerName">
-    <p>
-      {{this.id}}. {{this.burger_name}}
-    </p>
-  </li>
+      {{this.id}}. {{this.burger_name}} <button type="submit" name="devoured" value="1" id="devourBurger" class="btn">Devour a Burger!</button>
+   </li>
+  {{/unless}}
   {{/each}}
 </ul>
+</div>
 
-<h2 class="order">Order a Burger</h2>
+{{!Text area in middle to order burger}}
+<div class-="orderArea">
 <form id="orderburger" class="button-size">
-  <textarea type="text" name="burger_name"></textarea>
-  <button type="submit" class="btn">Order a Burger!</button>
+  <textarea class="textArea" type="text" name="burger_name"></textarea><br>
+  <button type="submit" class="orderBtn">Order a Burger!</button>
 </form>
+</div>
 
-<h2 class="devour">Devour a Burger</h2>
-<form id="devourburger" class="button-size">
-  <select name="id">
-		{{#each burgers}}
-			<option value="{{this.id}}">{{this.burger_name}}</option>
-		{{/each}}
-	</select>
-  <button type="submit" class="btn">Devour a Burger!</button>
-</form>
+{{!List area on right for devoured burgers}}
+<div class="devourList">
+<h1>Burgers Devoured</h1>
+<ul>
+  {{#each burgers}}
+  {{#if this.devoured}}
+  <li class="burgerName">
+    {{this.id}}. {{this.burger_name}} 
+  </li>
+  {{/if}}
+  {{/each}}
+</ul>
+</div>
 
+{{!-- Create a new burger --}}
 <script type="text/javascript">
   $("#orderburger").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    // [name=order] will find an element with a "name" attribute equal to the string "burger"
     var newBurger = {
       burger_name: $("#orderburger [name=burger_name]").val().trim()
     };
@@ -67,25 +77,23 @@ Need a submit button that inputs data into mySQL}}
       }
     );
   });
-
-  $("#devourburger").on("submit", function(event) {
+  
+//Devour a burger
+  $("#devourBurger").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    // Get the ID by finding an element with a "name" attribute equal to the string "id"
-    var id = $("[name=id]").val().trim();
-
     var devourBurger = {
-      burger_name: $("#devourburger [name=burger_name]").val().trim()
+      devoured: $("#devourburger [name=burger_name]").val().trim()
     };
 
     // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
+    $.ajax("/api/burgers", {
       type: "PUT",
-      data: devourBurger
+      data: devoured
     }).then(
       function() {
-        console.log("devoured burger ", id);
+        console.log("devoured burger");
         // Reload the page to get the updated list
         location.reload();
       }
