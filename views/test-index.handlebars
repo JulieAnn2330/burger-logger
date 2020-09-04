@@ -1,0 +1,35 @@
+{{! This is the template that the html with display to
+Need a submit button that inputs data into mySQL}}
+{{!List area on left for ordered burgers}}
+<div class="orderList">
+<h1>Burgers Ordered</h1>
+<ul class="burgerName">
+  {{#each burgers}}
+   {{#unless devoured}}
+      {{> burgers/burger-block devoured=false}}
+  {{/unless}}
+  {{/each}}
+</ul>
+</div>
+
+{{!Text area in middle to order burger}}
+<h1 class="order">Order a Burger</h1>
+<form class="create-form">
+  <div class="form-group">
+    <input class="textArea" type="text" id="bu" name="burger">
+  </div>
+  <button class="orderBtn" type="submit">Order a Burger!</button>
+</form>
+
+
+{{!List area on right for devoured burgers}}
+<div class="devourList">
+<h1>Burgers Devoured</h1>
+<ul class="burgerName">
+  {{#each burgers}}
+  {{#if devoured}}
+     {{> burgers/burger-block devoured=true}} 
+  {{/if}}
+  {{/each}}
+</ul>
+</div>

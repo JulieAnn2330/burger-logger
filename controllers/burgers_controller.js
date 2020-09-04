@@ -4,48 +4,64 @@ Create the router for the app
 Export the router with module.exports*/
 
 const express = require("express");
-const burgerjs = require('/models/burger.js');
 const router = express.Router();
+
+var burger = require('../models/burger');
 
 // Routes
 // Use Handlebars to render the main index.html page with the burgers in it.
 router.get("/", function(req, res) {
-    connection.query("SELECT * FROM burgers;", function(err, data) {
-      if (err) {
-        return res.status(500).end();
-      }
-  
-      res.render("index", { burgers: data });
+  burger.selectAll(function(data) {
+  var hbsObject = {
+    burgers: data
+  };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
     });
   });
   
   // Create a new burger
   router.post("/api/burgers", function(req, res) {
-    connection.query("INSERT INTO burgers (burger_name) VALUES (?)", [req.body.burger_name], function(err, result) {
-      if (err) {
-        return res.status(500).end();
-      }
-  
-      // Send back the ID of the new burger
+    burger.insertOne([
+      "burger_name", "devoured"
+    ], [
+      req.body.burger_name, req.body.devoured
+    ], function(result) {
+      // Send back the ID of the new quote
       res.json({ id: result.insertId });
-      console.log({ id: result.insertId });
     });
   });
   
   //Devour a Burger
-  router.put("/api/burgers", function(req, res) {
-    connection.query("UPDATE burgers SET devoured = 1 WHERE burger_name = ?", [req.params.burger_name], function(err, result) {
-      if (err) {
-        // If an error occurred, send a generic server failure
-        return res.status(500).end();
+  router.put("/api/burgers/:id", function(req, res) {
+
+    var condition = "id = " + req.params.id;
+
+    console.log("condition", condition);
+
+    burger.updateOne({
+      devoured: req.body.devoured
+    }, condition, function(result) {
+      if (result.changedRows == 0) {
+        return res.status(404).end();
+      } else {
+        res.status(200).end();
       }
-  
-      // Send back the devoured status of the burger
-      res.json({ devoured: result.updateDevoured });
-      console.log({ devoured: result.updateDevoured });
-    
-  
     });
   });
 
-  moudule.exports = router;
+  router.delete("/api/burgers/:id", function(req, res) {
+    var condition = "id = " + req.params.id;
+    console.log("condition", condition);
+
+    burger.deleteOne(condition, function(result) {
+        if (result.changedRows === 0) {
+            // If no rows were changed, then the ID must not exist, so 404.
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
+
+  module.exports = router;

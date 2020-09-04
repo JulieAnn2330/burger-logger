@@ -7,43 +7,63 @@ body {
     text-align: center;
     }
 
-.burgerName, .textArea {
+.burgerName, .textArea, .devoured {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 12px;
-}
-
-.order, .devour, .btn, h1 {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 h1 {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 16px;
+    font-size: 30px;
     margin-left:40px;
-    
 }
 
-.btn, .devourBurger {
+.order {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 10px;
+    font-size: 30px;
+    margin-left: 675px;
+    margin-top: 40px;
+}
+
+.eatburger, .change-devoured {
+    border: 2px solid black;
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 16px;
     margin-left: 10px;
     background-color: red;
     color: black;
+    margin-bottom: 5px;
+    
+}
+
+.trashburger {
+    border: 2px solid black;
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 16px;
+    margin-left: 10px;
+    background-color: yellow;
+    color: black;
+    margin-bottom: 5px;
 }
 
 .orderBtn {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 10px;
-    margin-left: 100px;
+    font-size: 16px;
+    margin-left: 180px;
     margin-top: 5px;
     background-color: limegreen;
     color: black;
 }
 
 .textArea {
-    margin-left: 75px;
-    margin-top: 60px;
+    margin-left: 100px;
+    margin-top: 25px;
 }
 
 .orderList {
@@ -52,10 +72,7 @@ h1 {
 
 .devourList {
     float: right;
-    margin-top: -123px;
-    margin-right: 150px;
+    margin-top: -170px;
+    margin-right: 245px;
 }
 
-.orderArea {
-    float: center;
-}

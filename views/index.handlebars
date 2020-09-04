@@ -1,102 +1,55 @@
-{{! This is the template that the html with display to
-Need a submit button that inputs data into mySQL}}
+{{!-- Setup the index.handlebars to have the template that Handlebars can render onto. --}}
+<div class="container">
+    <div class="row">
+        <!-- Undevoured Burgers -->
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="lefthead"><h1>Burgers Ordered</h1></div>
+                <div class="panel-body">
+                    <ul class="burgerName">
+                        {{#each burgers}}
+                            {{#unless devoured}}
+                                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                                <button type="button" class="eatburger" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}">Devour Burger!</button>
+                                <hr>
+                            {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+       <h1>Order a Burger</h1>
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="newburger"></label>
+                    <input type="text" id="newburger" class="textArea" name="burger">
+                    {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
+                    <button type="submit" class="orderBtn" id="addburger">Order a Burger!</button>
+                </div>
+            </form>
+        </panel>
+    </div><!-- /jumbotron -->
 
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="/Assets/css/burger_style.css" type="text/css">
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">   
-    <head>
-		<title>Eat-Da-Burger</title>
-	</head>
 
-<p class="aligncenter">
-    <img src="Assets/img/Eat-Da-Burger-Logo-Blue.png" alt = "logo"><br>
-    <img src="Assets/img/Colorful-Burgers-2.png" alt = "burgers">
-</p>
+        <!-- Devoured Burgers -->
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="righthead"><h1>Devoured Burgers</h1></div>
+                <div class="panel-body">
+                    <ul class="devoured">
+                        {{#each burgers}}
+                            {{#if devoured}}
+                                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                                <button type="button" class="trashburger" id ="trashbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}">Trash Burger!</button>
+                                <hr>
+                            {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- /row -->
 
-  <body>
-		{{{ body }}}
-	</body>
-</html>
-
-{{!List area on left for ordered burgers}}
-<div class="orderList">
-<h1>Burgers Ordered</h1>
-<ul>
-  {{#each burgers}}
-  {{#unless this.devoured}}
-  <li class="burgerName">
-      {{this.id}}. {{this.burger_name}} <button type="submit" name="devoured" value="1" id="devourBurger" class="btn">Devour a Burger!</button>
-   </li>
-  {{/unless}}
-  {{/each}}
-</ul>
-</div>
-
-{{!Text area in middle to order burger}}
-<div class-="orderArea">
-<form id="orderburger" class="button-size">
-  <textarea class="textArea" type="text" name="burger_name"></textarea><br>
-  <button type="submit" class="orderBtn">Order a Burger!</button>
-</form>
-</div>
-
-{{!List area on right for devoured burgers}}
-<div class="devourList">
-<h1>Burgers Devoured</h1>
-<ul>
-  {{#each burgers}}
-  {{#if this.devoured}}
-  <li class="burgerName">
-    {{this.id}}. {{this.burger_name}} 
-  </li>
-  {{/if}}
-  {{/each}}
-</ul>
-</div>
-
-{{!-- Create a new burger --}}
-<script type="text/javascript">
-  $("#orderburger").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var newBurger = {
-      burger_name: $("#orderburger [name=burger_name]").val().trim()
-    };
-
-    // Send the POST request.
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-  
-//Devour a burger
-  $("#devourBurger").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var devourBurger = {
-      devoured: $("#devourburger [name=burger_name]").val().trim()
-    };
-
-    // Send the PUT request.
-    $.ajax("/api/burgers", {
-      type: "PUT",
-      data: devoured
-    }).then(
-      function() {
-        console.log("devoured burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-</script>
+</div><!-- /container -->
