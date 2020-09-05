@@ -24,19 +24,18 @@ $(function() {
 
     $(".eatburger").on("click", function(event) {
       event.preventDefault();
+
       var id = $(this).data("id");
       var devouredState = {
-        devoured:1
+        devoured: 1
       };
   
   // Send the PUT request.
-      $.ajax("/api/burgers" + id, {
+      $.ajax("/api/burgers/" + id, {
         type: "PUT",
         data: devouredState
-        }).then(
-        function() {
+        }).then(function() {
           console.log("Burger devoured");
-          // Reload the page to get the updated list
           location.reload();
         });
     });

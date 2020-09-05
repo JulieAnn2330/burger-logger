@@ -3,13 +3,28 @@ body {
     width: 100%;
      }
 
+div {
+    display: inline-block;
+    width: 700px;
+    vertical-align: top;
+    margin-top: 30px;
+    }
+    
 .aligncenter {
     text-align: center;
     }
 
-.burgerName, .textArea, .devoured {
+.orderedTitle {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 25px;
+    font-size: 30px;
+
+    }
+    
+.burgerName {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 30px;
+    margin-left: 110px;
+
 }
 
 h1 {
@@ -18,11 +33,28 @@ h1 {
     margin-left:40px;
 }
 
-.order {
+.orderTitle {
     font-family: 'Luckiest Guy', cursive;
     font-size: 30px;
-    margin-left: 675px;
-    margin-top: 40px;
+    margin-left: 645px;
+   }
+
+.textArea {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 25px;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 30px;
+    margin-left: 570px;
+    margin-top: -15px;
+}
+
+.orderBtn {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 16px;
+    margin-left:680px;
+    margin-top: 5px;
+    background-color: limegreen;
+    color: black;
 }
 
 .eatburger, .change-devoured {
@@ -52,27 +84,19 @@ h1 {
     margin-bottom: 5px;
 }
 
-.orderBtn {
+
+
+.devoured  {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 16px;
-    margin-left: 180px;
-    margin-top: 5px;
-    background-color: limegreen;
-    color: black;
+    font-size: 30px;
+ 
+
 }
 
-.textArea {
-    margin-left: 100px;
-    margin-top: 25px;
-}
+.devouredTitle  {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 30px;
 
-.orderList {
-    float: left;
-}
-
-.devourList {
-    float: right;
-    margin-top: -170px;
-    margin-right: 245px;
+  
 }
 
