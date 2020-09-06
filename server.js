@@ -113,12 +113,11 @@ const nodemon = require('nodemon');
 const path = require('path');
 const bodyParser = require('body-parser')
 
-
 const app = express();
 
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
 // Parse request body as JSON
 app.use(bodyParser.urlencoded({ extended: true }));
