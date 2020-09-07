@@ -47,14 +47,14 @@
         ii. Create an orm.js file inside this -- DONE
             1. Inside this import (require) connection.js
             2. Create methods that will execute mySQL commands in the controllers. This will retrieve and store data in the db
-                a. selectAll()
-                b. insertOne()
-                c. updateOne()
+                a. selectAll() -- DONE
+                b. insertOne() -- DONE
+                c. updateOne() -- DONE
             3. Export ORM with module.exports
     l. Create a folder called models -- DONE
         i. Inside this make a burger.js file -- DONE
-            1. Inside this import orm.js
-            2. Create code that will call ORM functions using burger specific input for the ORM
+            1. Inside this import orm.js 
+            2. Create code that will call ORM functions using burger specific input for the ORM -- DONE
             3. Export burger.js with module.exports
     m. Create a folder called controllers -- DONE
         i. Inside this create burgers_controller.js -- DONE
