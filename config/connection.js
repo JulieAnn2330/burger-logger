@@ -5,7 +5,7 @@ Export connection*/
 var mysql = require("mysql");
 
 if (process.env.NODE_ENV === 'production') {
-  var connection = mysql.createConnection(process.env.burgers_DB_URL)
+  var connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
  var connection = mysql.createConnection({
   host: "localhost",
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
   password: "Tbjs233069$",
   database: "burgers_db"
 });
-};
+}
 
 // Make connection.
 connection.connect(function(err) {
