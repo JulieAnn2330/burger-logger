@@ -5,7 +5,7 @@ Export connection*/
 var mysql = require("mysql");
 
 if (process.env.NODE_ENV === 'production') {
-  const connection = mysql.createConnection(process.env.JAWSDB_URL)
+  const connection = mysql.createConnection(process.env.Burgers_DB_URL)
 } else {
  var connection = mysql.createConnection({
   host: "localhost",
