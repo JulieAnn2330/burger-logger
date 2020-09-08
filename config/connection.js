@@ -7,8 +7,8 @@ var mysql = require("mysql");
 if (process.env.NODE_ENV === 'production') {
   const connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
- const connection = mysql.createConnection({
-  host: "127.0.0.1",
+ var connection = mysql.createConnection({
+  host: "localhost",
   port: 3306,
   user: "root",
   password: "Tbjs233069$",
