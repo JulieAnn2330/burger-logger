@@ -3,15 +3,15 @@ Export connection*/
 
 //Set up MySQL connection.
 var mysql = require("mysql");
+require('dotenv').config();
 
 if (process.env.NODE_ENV === 'production') {
   var connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
  var connection = mysql.createConnection({
   host: "localhost",
-  port: 3306,
   user: "root",
-  password: "Tbjs233069$",
+  password:process.env.PASSWORD,
   database: "burgers_db"
 });
 }
